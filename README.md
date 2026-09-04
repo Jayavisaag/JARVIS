@@ -18,6 +18,7 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 - 🧠 **Multi-step autonomous reasoning** — plans, executes, and re-evaluates across several tool calls per request instead of answering blind in one shot
 - 👁️ **Real vision grounding** — optionally sees your screen and webcam and reasons over what's actually there, not just your words
 - 🖱️ **Hands-off GUI control** — can operate your desktop for you, with a spoken confirmation gate before anything risky
+- 🖥️ **Full PC command surface** — voice-driven app/website launching, system volume control, live CPU/RAM/GPU/VRAM/temp monitoring, and one-click **Lock / Sleep / Restart**, plus a slide-to-confirm **Shutdown**
 - 🗣️ **Natural, interruptible voice** — talk over it mid-sentence and it stops instantly, like a real conversation
 - 💡 **Full smart lighting control** — power, brightness, precise RGB/HSV color, warm↔cool white balance, and scenes
 - 🌀 **Custom smart fan integration** — power, 6-speed control, sleep mode, LED toggle
@@ -51,6 +52,11 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 - Direct `pyautogui`-driven mouse/keyboard action surface exposed as first-class agent tool calls (move, click, type, hotkeys).
 - A pre-execution action classifier flags actions as potentially destructive and routes them through a **spoken confirmation gate** before dispatch — the agent can propose an action but cannot silently execute high-risk ones.
 - Hardware fail-safe (corner-abort) kept enabled at the automation layer independent of the agent's own gating logic — a hard interrupt path that isn't mediated by the model.
+
+### System Control Surface
+- Dedicated power-state action set (lock/sleep/restart/shutdown) routed through the same executor and confirmation gating as any other agent action, with a client-side slide-to-confirm affordance on the highest-risk operation (shutdown) as an extra deliberate-input barrier before dispatch.
+- App/website launch resolved from a name-based lookup against installed applications rather than hardcoded paths, so the launcher surface adapts to the host machine.
+- System volume control and live resource telemetry (CPU/RAM/GPU utilization, VRAM, temp) polled via `psutil`/GPU query and streamed to the frontend on a timer independent of the agent loop, so the HUD stays live even when the agent is idle.
 
 ### Persistence & Memory
 - SQLite-backed store with a lock-guarded write path (decorator-wrapped connection handling to serialize access from multiple threads: voice loop, scheduler loop, GUI bridge).
@@ -97,7 +103,7 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 
 ## 🚧 Status
 
-Actively evolving personal build — Windows-first, with hardware-specific assumptions baked in (particular smart-light/fan protocols, ADB-based phone bridge). Shared as a portfolio/reference project rather than a turnkey install. 
+Actively evolving personal build — Windows-first, with hardware-specific assumptions baked in (particular smart-light/fan protocols, ADB-based phone bridge). Shared as a portfolio/reference project rather than a turnkey install.
 
 ---
 
