@@ -109,4 +109,5 @@ Actively evolving personal build — Windows-first, with hardware-specific assum
 
 ## ⚠️ Disclaimer
 
-This system executes real actions against a live machine and network — process control, input injection, and networked devices. It's designed for personal use on a trusted local setup; review and understand the code before running it on your own hardware.
+This system executes real actions against a live machine and network — process control, input injection, and networked devices. It's designed for personal use on a trusted local setup; review and understand the code before running it on your own hardware. 
+ 
