@@ -12,6 +12,23 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 
 ---
 
+## ✨ Features
+
+- 🎙️ **Hands-free wake word** — fully offline, always-listening activation, no cloud STT and no network dependency for voice input
+- 🧠 **Multi-step autonomous reasoning** — plans, executes, and re-evaluates across several tool calls per request instead of answering blind in one shot
+- 👁️ **Real vision grounding** — optionally sees your screen and webcam and reasons over what's actually there, not just your words
+- 🖱️ **Hands-off GUI control** — can operate your desktop for you, with a spoken confirmation gate before anything risky
+- 🗣️ **Natural, interruptible voice** — talk over it mid-sentence and it stops instantly, like a real conversation
+- 💡 **Full smart lighting control** — power, brightness, precise RGB/HSV color, warm↔cool white balance, and scenes
+- 🌀 **Custom smart fan integration** — power, 6-speed control, sleep mode, LED toggle
+- 📱 **Phone as a controllable device** — launch apps, place calls, send texts, control media/volume, toggle Wi-Fi/Bluetooth/airplane mode, right from your desktop
+- ⏰ **Set-and-forget scheduling** — one-off and recurring reminders/routines that fire on their own
+- 🧩 **Persistent memory** — remembers facts and conversation context across sessions, not just within one chat
+- 🔍 **Live web-grounded answers** — pulls current information instead of relying on stale training data
+- 🖥️ **A real command-center UI** — animated neural-core visualizer, live CPU/RAM/GPU/VRAM gauges, one-click power controls, and dedicated panels for every connected device — not a bare terminal window
+
+---
+
 ## ⚙️ Core Engineering
 
 ### Agentic Reasoning Loop
@@ -86,4 +103,4 @@ Actively evolving personal build — Windows-first, with hardware-specific assum
 
 ## ⚠️ Disclaimer
 
-This system executes real actions against a live machine and network — process control, input injection, and networked devices. It's designed for personal use on a trusted local setup; review and understand the code before running it on your own hardware. 
+This system executes real actions against a live machine and network — process control, input injection, and networked devices. It's designed for personal use on a trusted local setup; review and understand the code before running it on your own hardware.
