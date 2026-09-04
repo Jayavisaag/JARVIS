@@ -18,7 +18,7 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 - 🧠 **Multi-step autonomous reasoning** — plans, executes, and re-evaluates across several tool calls per request instead of answering blind in one shot
 - 👁️ **Real vision grounding** — optionally sees your screen and webcam and reasons over what's actually there, not just your words
 - 🖱️ **Hands-off GUI control** — can operate your desktop for you, with a spoken confirmation gate before anything risky
-- 🖥️ **Full PC command surface** — voice-driven app/website launching, system volume control, live CPU/RAM/GPU/VRAM/temp monitoring, and one-click **Lock / Sleep / Restart**, plus a slide-to-confirm **Shutdown**
+- 🖥️ **Full PC command surface** — voice-driven app/website launching and web search, window management (minimize/maximize/close/switch), system-wide media & volume transport, Wi-Fi/Bluetooth toggling, on-demand screenshots, live CPU/RAM/GPU/VRAM/temp monitoring, and full power/session control — **Lock, Sign Out, Sleep, Hibernate, Restart**, plus a slide-to-confirm **Shutdown** (with cancel support)
 - 🗣️ **Natural, interruptible voice** — talk over it mid-sentence and it stops instantly, like a real conversation
 - 💡 **Full smart lighting control** — power, brightness, precise RGB/HSV color, warm↔cool white balance, and scenes
 - 🌀 **Custom smart fan integration** — power, 6-speed control, sleep mode, LED toggle
@@ -54,9 +54,13 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 - Hardware fail-safe (corner-abort) kept enabled at the automation layer independent of the agent's own gating logic — a hard interrupt path that isn't mediated by the model.
 
 ### System Control Surface
-- Dedicated power-state action set (lock/sleep/restart/shutdown) routed through the same executor and confirmation gating as any other agent action, with a client-side slide-to-confirm affordance on the highest-risk operation (shutdown) as an extra deliberate-input barrier before dispatch.
-- App/website launch resolved from a name-based lookup against installed applications rather than hardcoded paths, so the launcher surface adapts to the host machine.
-- System volume control and live resource telemetry (CPU/RAM/GPU utilization, VRAM, temp) polled via `psutil`/GPU query and streamed to the frontend on a timer independent of the agent loop, so the HUD stays live even when the agent is idle.
+- Dedicated power/session action set — lock, sign out, sleep, hibernate, restart, and shutdown (with cancel support) — routed through the same executor and confirmation gating as any other agent action, with a client-side slide-to-confirm affordance on the highest-risk operation as an extra deliberate-input barrier before dispatch.
+- Native window management (minimize/maximize/close/switch active window) and system-wide media transport (play/pause/next/previous/stop) exposed as first-class actions, independent of any specific application being focused.
+- OS-level connectivity toggles (Wi-Fi, Bluetooth — including paired-device listing) driven through native OS calls rather than an external device bridge.
+- Full volume surface — increase/decrease/mute/unmute/set-to-level — layered on `pycaw`'s Core Audio endpoint bindings for precise, driver-level control rather than simulated key presses.
+- App/website launch resolved from a name-based lookup against installed applications and known sites rather than hardcoded paths, plus direct web/YouTube search dispatch, so the launcher surface adapts to the host machine.
+- On-demand screenshot capture wired into the same action surface as every other command, so "screenshot this" is a first-class voice action, not a separate utility.
+- Live resource telemetry (CPU/RAM/GPU utilization, VRAM, temp) polled via `psutil`/GPU query and streamed to the frontend on a timer independent of the agent loop, so the HUD stays live even when the agent is idle.
 
 ### Persistence & Memory
 - SQLite-backed store with a lock-guarded write path (decorator-wrapped connection handling to serialize access from multiple threads: voice loop, scheduler loop, GUI bridge).
