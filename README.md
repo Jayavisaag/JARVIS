@@ -97,7 +97,7 @@ This isn't a chatbot wrapper. It's a closed-loop **agentic control system**: a l
 
 ## 🚧 Status
 
-Actively evolving personal build — Windows-first, with hardware-specific assumptions baked in (particular smart-light/fan protocols, ADB-based phone bridge). Shared as a portfolio/reference project rather than a turnkey install.
+Actively evolving personal build — Windows-first, with hardware-specific assumptions baked in (particular smart-light/fan protocols, ADB-based phone bridge). Shared as a portfolio/reference project rather than a turnkey install. 
 
 ---
 
